@@ -11,6 +11,7 @@ impl KvStore {
             store: HashMap::new(),
         }
     }
+
     pub fn set(&mut self, key: String, val: String) {
         self.store.insert(key, val);
     }
