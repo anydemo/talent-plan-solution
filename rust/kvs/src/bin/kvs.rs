@@ -36,22 +36,15 @@ fn main() {
 
     match matches.subcommand() {
         ("set", Some(_matches)) => {
-            let key = _matches.value_of("KEY").unwrap();
-            let val = _matches.value_of("VALUE").unwrap();
-            println!("set {} {}", key, val);
-            store.set(key.to_owned(), val.to_owned());
+            eprintln!("unimplemented");
             exit(1);
         }
         ("get", Some(_matches)) => {
-            let key = _matches.value_of("KEY").unwrap();
-            println!("get {}", key);
-            store.get(key.to_owned());
+            eprintln!("unimplemented");
             exit(1);
         }
         ("rm", Some(_matches)) => {
-            let key = _matches.value_of("KEY").unwrap();
-            println!("rm {}", key);
-            store.remove(key.to_owned());
+            eprintln!("unimplemented");
             exit(1);
         }
         _ => unreachable!(),
