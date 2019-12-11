@@ -1,6 +1,9 @@
 use clap::{App, AppSettings, Arg, SubCommand};
+
 use kvs::{KvStore, KvsError, Result};
+
 use std::env::current_dir;
+use std::path::{PathBuf};
 use std::process::exit;
 
 fn main() -> Result<()> {
@@ -11,6 +14,7 @@ fn main() -> Result<()> {
         .setting(AppSettings::DisableHelpSubcommand)
         .setting(AppSettings::SubcommandRequiredElseHelp)
         .setting(AppSettings::VersionlessSubcommands)
+        .arg(Arg::with_name("data").help("data dir"))
         .subcommand(
             SubCommand::with_name("set")
                 .about("Set the value of a string key to a string")
@@ -33,7 +37,13 @@ fn main() -> Result<()> {
         )
         .get_matches();
 
-    let data_path = "data";
+    let data_arg = matches.value_of("data").unwrap_or("");
+    let data_path = if !data_arg.is_empty() {
+        PathBuf::from(data_arg)
+    } else {
+        current_dir()?
+    };
+
     match matches.subcommand() {
         ("set", Some(matches)) => {
             let key = matches.value_of("KEY").expect("KEY argument missing");
