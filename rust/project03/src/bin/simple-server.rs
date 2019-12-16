@@ -29,7 +29,7 @@ fn handle_client(mut stream: TcpStream) {
                 } else {
                     "UNSUPPORTED CMD"
                 };
-                stream.write(resp.as_bytes()).unwrap();
+                stream.write_all(resp.as_bytes()).unwrap();
             }
             Err(err) => {
                 panic!(err);

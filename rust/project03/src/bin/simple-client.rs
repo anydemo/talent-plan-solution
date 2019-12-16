@@ -9,15 +9,15 @@ use std::str::from_utf8;
 
 fn main() {
     env_logger::init();
-    let server_add = "localhost:8080";
+    let server_add = "localhost:6379";
 
     match TcpStream::connect(server_add) {
         Ok(mut stream) => {
             info!("Successfully connected to server: {}", server_add);
 
-            let msg = "PING\r\n";
+            let msg = "PING aaa\r\n";
 
-            stream.write(msg.as_bytes()).unwrap();
+            stream.write_all(msg.as_bytes()).unwrap();
             info!("Sent {}, awaiting reply...", msg);
 
             let mut data = [0 as u8; 1024];
