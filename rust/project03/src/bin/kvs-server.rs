@@ -3,13 +3,16 @@ extern crate log;
 #[macro_use]
 extern crate clap;
 
-use kvs::*;
 use std::env;
 use std::env::current_dir;
 use std::fs;
 use std::net::SocketAddr;
 use std::process::exit;
 use structopt::StructOpt;
+
+use log::LevelFilter;
+
+use kvs::*;
 
 const DEFAULT_LISTENING_ADDRESS: &str = "127.0.0.1:4000";
 const DEFAULT_ENGINE: Engine = Engine::kvs;
@@ -45,7 +48,8 @@ arg_enum! {
 
 fn main() {
     // env_logger::builder().filter_level(LevelFilter::Info).init();
-    env_logger::init();
+    // env_logger::init();
+    env_logger::builder().filter_level(LevelFilter::Info).init();
     let mut opt = Opt::from_args();
     let res = current_engine().and_then(move |curr_engine| {
         if opt.engine.is_none() {

@@ -9,6 +9,7 @@
         "serializer",
         "structopt",
         "subcommand",
+        "tempfile",
         "uncompacted"
     ]
 }
