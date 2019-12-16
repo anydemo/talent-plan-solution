@@ -74,7 +74,10 @@ fn run(opt: Opt) -> Result<()> {
 
     match engine {
         Engine::kvs => run_with_engine(KvStore::open(env::current_dir()?)?, opt.addr),
-        Engine::sled => unimplemented!(),
+        Engine::sled => run_with_engine(
+            SledKvsEngine::new(sled::Db::start_default(env::current_dir()?)?),
+            opt.addr,
+        ),
     }
 }
 

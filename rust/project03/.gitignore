@@ -1,3 +1,7 @@
 /data
 *.log
 engine
+/conf
+/db
+/snap.*
+/blobs
