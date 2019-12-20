@@ -1,8 +1,8 @@
-//! trait ThreadPool and some implement
+//! This module provides various thread pools. All thread pools should implement
+//! the `ThreadPool` trait.
 
 use crate::Result;
 
-mod chanel;
 mod naive;
 mod rayon;
 mod shared_queue;
