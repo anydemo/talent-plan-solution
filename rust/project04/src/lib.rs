@@ -8,6 +8,7 @@ pub use client::KvsClient;
 pub use engines::{KvStore, KvsEngine, SledKvsEngine};
 pub use error::{KvsError, Result};
 pub use server::KvsServer;
+pub use thread_pool::ThreadPool;
 
 mod client;
 mod common;
