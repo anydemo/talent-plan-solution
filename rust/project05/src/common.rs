@@ -24,3 +24,11 @@ pub enum RemoveResponse {
     Ok(()),
     Err(String),
 }
+
+#[derive(Debug, Serialize, Deserialize)]
+pub enum Response {
+    Get(Option<String>),
+    Set,
+    Remove,
+    Err(String),
+}
